@@ -1,4 +1,3 @@
-
 import random
 import time
 import json
@@ -12,14 +11,14 @@ def select_difficulty():
     difficulty = input("Enter your choice (1/2/3): ")
 
     if difficulty == "1":
-        return random.randint(1, 50), 15
+        return random.randint(1, 50), 50, 15
     elif difficulty == "2":
-        return random.randint(1, 100), 10
+        return random.randint(1, 100), 100, 10
     elif difficulty == "3":
-        return random.randint(1, 200), 5
+        return random.randint(1, 200), 200, 5
     else:
         print("Invalid choice, defaulting to Medium.")
-        return random.randint(1, 100), 10
+        return random.randint(1, 100), 100, 10
 
 # Function to generate a hint based on the secret number
 def give_hint(secret_number):
@@ -35,7 +34,7 @@ def give_hint(secret_number):
 # Function for the number guessing game
 def number_guessing_game():
     # Select difficulty
-    secret_number, max_attempts = select_difficulty()
+    secret_number, upper_limit, max_attempts = select_difficulty()
     
     attempts = 0
     guesses = []
@@ -50,7 +49,7 @@ def number_guessing_game():
 
     # Game introduction
     print("\nWelcome to the Number Guessing Game!")
-    print(f"I'm thinking of a number between 1 and {max_attempts * 10}.")
+    print(f"I'm thinking of a number between 1 and {upper_limit}.")
     print(f"You have {max_attempts} attempts to guess the number.\n")
 
     while attempts < max_attempts:
